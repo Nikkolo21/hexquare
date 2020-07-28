@@ -1,0 +1,16 @@
+@import './src/assets/colors.scss';
+
+.footer-box {
+    height: 100px;
+    line-height: 100px;
+    border-top: solid .5px #aaa8a847;
+    font-size: 1em;
+    text-align: right;
+    padding: 0px 10%;
+    position: absolute;
+    width: -webkit-fill-available;
+
+    span {
+        color: $color-primary-2-hex;
+    }
+}

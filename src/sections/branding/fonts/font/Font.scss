@@ -1,0 +1,64 @@
+.font-section {
+    display: flex;
+    padding: 20px;
+    width: 100%;
+    max-width: 500px;
+    color: rgba($color: #000000, $alpha: 0.8);
+    .left {
+        display: grid;
+        width: 40%;
+        small {
+            text-align: right;
+            text-transform: uppercase;
+        }
+        .big-size {
+            font-size: 8em;
+            text-decoration: none;
+            color: rgba($color: #000000, $alpha: 0.8);
+        }
+        .editable {
+            border: none;
+            background-color: transparent;
+            resize: none;
+        }
+        .editable:focus {
+            outline: 0px solid transparent;
+        }
+    }
+    .right {
+        display: grid;
+        width: 60%;
+    }
+    .medium-size {
+        padding: 40px 20px;
+        font-size: 1.5em;
+    }
+}
+
+@media (max-width: 600px) {
+    .font-section {
+        display: grid;
+        padding: 20px 0;
+        .editable {
+            display: none;
+        }
+        .left {
+            text-align: center;
+            small {
+                text-align: center;
+            }
+        }
+        .left, .right {
+            width: 100%;
+        }
+        .medium-size {
+            padding: 0;
+        }
+    }
+}
+
+@media (max-width: 992px) {
+    .font-section {
+        margin: 0 auto;
+    }
+}

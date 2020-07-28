@@ -1,0 +1,29 @@
+.color {
+    cursor: pointer;
+    flex-grow: 1;
+    height: 100%;
+    float: left;
+    position: relative;
+    span {
+        position: absolute;
+        bottom: 1em;
+        right: 1em;
+    }
+    small {
+        position: absolute;
+        top: 1em;
+        right: 1em;
+
+    }
+}
+
+@media (max-width: 600px) {
+    .palette-section {
+        .palette-box {
+            display: grid;
+            .color {
+                height: 100px;
+            }
+        }
+    }
+}
