@@ -1,0 +1,12 @@
+runtime: nodejs12
+handlers:
+  - url: /(.*\.(gif|media|json|ico|eot|ttf|woff|woff2|png|jpg|css|js))$
+    static_files: build/\1
+    upload: build/(.*)
+  - url: /(.*\.(svg|svgz))
+    mime_type: images/svg+xml
+    static_files: build/\1
+    upload: build/(.*\.(svg|svgz))
+  - url: /(.*)
+    static_files: build/index.html
+    upload: build/index.html

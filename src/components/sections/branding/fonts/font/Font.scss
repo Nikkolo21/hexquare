@@ -1,3 +1,5 @@
+@import './src/assets/breakpoints.scss';
+
 .font-section {
     display: flex;
     padding: 20px;
@@ -35,7 +37,7 @@
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: $small_devices) {
     .font-section {
         display: grid;
         padding: 20px 0;
@@ -57,7 +59,7 @@
     }
 }
 
-@media (max-width: 992px) {
+@media (max-width: $medium_devices) {
     .font-section {
         margin: 0 auto;
     }

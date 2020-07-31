@@ -1,10 +1,12 @@
 import React from 'react';
 import './App.scss';
-import Header from './main/header/Header';
-import Footer from './main/footer/Footer';
+import Header from './components/main/header/Header';
+import Footer from './components/main/footer/Footer';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Home from './main/home/Home';
-import NotFound from './main/not-found/NotFound';
+import Home from './components/main/home/Home';
+import NotFound from './components/main/not-found/NotFound';
+import Login from './components/session/login/Login';
+import Register from './components/session/register/Register';
 
 function App() {
   return (
@@ -14,6 +16,12 @@ function App() {
         <Switch>
           <Route exact path="/">
             <Home/>
+          </Route>
+          <Route exact path="/login">
+            <Login/>
+          </Route>
+          <Route exact path="/register">
+            <Register/>
           </Route>
           <Route path="*">
             <NotFound/>

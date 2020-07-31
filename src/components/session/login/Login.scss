@@ -1,0 +1,27 @@
+@import './src/assets/colors.scss';
+
+.login-section {
+    display: flex;
+    height: 80vh;
+    .left {
+        width: 60%;
+        background-color: white;
+        display: grid;
+        place-items: center;
+
+        form {
+            width: 100%;
+            max-width: 500px;
+            h1 {
+                margin: 50px 0;
+            }
+        }
+    }
+    .right {
+        width: 40%;
+        background-image: url('/img/login.png');
+        background-repeat: no-repeat;
+        background-position: left;
+        /*background-color: $color-primary-2-hex;*/
+    }
+}

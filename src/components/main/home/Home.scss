@@ -1,0 +1,7 @@
+@import './src/assets/breakpoints.scss';
+
+@media (max-width: $small_devices) {
+    .home-section {
+        padding: 0 20px;
+    }
+}

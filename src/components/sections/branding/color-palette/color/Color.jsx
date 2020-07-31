@@ -10,7 +10,7 @@ export default function Color(props) {
     return (
         <CopyToClipboard text={color} onCopy={() => setCopied(true)} onMouseLeave={() => copied && setCopied(false)}>
             <div className="color" style={{backgroundColor: color}}>
-                <span>{color}</span> {copied && <small>copied</small>}
+                <span>{color}</span> {copied && <small>Copied!</small>}
             </div>
         </CopyToClipboard>
     )

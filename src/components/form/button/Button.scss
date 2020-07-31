@@ -1,0 +1,22 @@
+@import './src/assets/colors.scss';
+
+.button {
+    width: 100%;
+    max-width: 500px;
+    border: none;
+    height: 60px;
+    border-radius: 5px;
+    font-family: 'Inter-Medium';
+    font-size: 1em;
+    margin: 30px 0;
+
+    &-primary {
+        color: white;
+        background-color: $color-primary-2-hex;
+    }
+    &-secondary {
+        background-color: white;
+        color: $color-primary-2-hex;
+        border: solid 1px $color-primary-2-hex;
+    }
+}

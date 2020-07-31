@@ -1,3 +1,5 @@
+@import './src/assets/breakpoints.scss';
+
 .color {
     cursor: pointer;
     flex-grow: 1;
@@ -11,18 +13,22 @@
     }
     small {
         position: absolute;
-        top: 1em;
-        right: 1em;
+        top: 50%;
+        right: 35%;
 
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: $small_devices) {
     .palette-section {
         .palette-box {
             display: grid;
             .color {
                 height: 100px;
+                small {
+                    top: 1em;
+                    right: 1em;
+                }
             }
         }
     }

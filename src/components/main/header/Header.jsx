@@ -9,7 +9,7 @@ export default class Header extends Component {
                 <NavLink exact={true} activeClassName="is-active" className="logo link" to="/">
                     HEXQUARE dev
                 </NavLink>
-                <NavLink activeClassName="is-active" className="link" to="/about">
+                <NavLink activeClassName="is-active" className="link" to="/login">
                     Login
                 </NavLink>
             </header>
