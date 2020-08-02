@@ -1,6 +1,6 @@
-import React from 'react'
-import ColorPalette from './color-palette/ColorPalette';
-import Fonts from './fonts/Fonts';
+import React from 'react';
+import ColorPalette from './ColorPalette';
+import Fonts from './Fonts';
 import './Branding.scss';
 
 export default function Branding() {

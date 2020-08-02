@@ -20,7 +20,7 @@ export default function Input(props) {
             <input name={inputName} defaultValue={defaultValue} className={`input input-${type}`} type={inputType} placeholder={placeholder} ref={inputRef}/>
             {errors && errors.type === "required" && <small className="error">{inputName} is required</small>}
             {errors && errors.type === "pattern" && <small className="error">Verify your {inputName}</small>}
-            {errors && errors.type === "minLength" && <small className="error">Min length of the {inputName} is {minLength} </small>}
+            {errors && errors.type === "minLength" && <small className="error">Min {minLength} length</small>}
         </div>
     )
 }

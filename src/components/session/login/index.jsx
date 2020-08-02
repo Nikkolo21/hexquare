@@ -1,19 +1,19 @@
-import React, {useState} from 'react';
-import './Register.scss';
+import React, { useState } from 'react';
+import './Login.scss';
 import Button from '../../form/button/Button';
 import Input from '../../form/input/Input';
 import { useForm } from "react-hook-form";
-import { signup } from '../../../services/session.service';
+import { login } from '../../../services/session.service';
 import { Link } from 'react-router-dom';
-import { registerForm } from './register.form';
+import { loginForm } from './login.form';
 
-export default function Register() {
+export default function Login() {
     const { register, handleSubmit, errors } = useForm();
     const [errorMessage, setErrorMessage] = useState(null);
 
-    const onSubmit = ({name, lastname, email, password}) => {
+    const onSubmit = ({email, password}) => {
         setErrorMessage(null);
-        signup(name, lastname, email, password, (response) => {
+        login(email, password, (response) => {
             if(response && response.errorMessage) {
                 setErrorMessage(response.errorMessage);
             }
@@ -21,12 +21,12 @@ export default function Register() {
     };
 
     return (
-        <section className="register-section">
+        <section className="login-section">
             <div className="left">
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <h1>Create your account</h1>
+                    <h1>Log in to your account</h1>
                     {
-                        registerForm.map(elem => 
+                        loginForm.map(elem => 
                         <Input
                             key={elem.id}
                             minLength={elem.minLenght}
@@ -44,9 +44,9 @@ export default function Register() {
                             placeholder={elem.placeholder}
                         />)
                     }
+                    <small>You do not have an account? <Link className="create-account" to="/register">Create one</Link></small>
                     <p>{errorMessage && <small className="error">{errorMessage}</small>}</p>
-                    <small><Link className="have-account" to="/login">I already have an account</Link></small>
-                    <Button type="primary" text="Sign up" />
+                    <Button type="primary" text="Log in" />
                 </form>
             </div>
             <div className="right"></div>

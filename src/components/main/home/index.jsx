@@ -1,6 +1,6 @@
 import React from 'react';
 import './Home.scss';
-import Branding from '../../sections/branding/Branding';
+import Branding from '../../sections/principal/Branding';
 
 export default function Home() {
     return (

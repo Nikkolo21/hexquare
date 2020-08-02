@@ -9,7 +9,7 @@ export const loginForm = [
         minLenght: 8,
         maxLenght: 50,
         required: true,
-        pattern: /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/
+        pattern: /^[a-zA-Z0-9\-_.]+@[a-zA-Z0-9]+\.[A-Za-z]+$/
     },
     {
         id: 2,
@@ -18,7 +18,7 @@ export const loginForm = [
         inputType: "password",
         type: "primary",
         placeholder: "password", 
-        minLenght: 5,
+        minLenght: 8,
         maxLenght: 30,
         required: true
     }

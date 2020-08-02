@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import './Color.scss';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
+import './Color.scss';
 
 
 export default function Color(props) {

@@ -1,8 +1,8 @@
 import React from 'react';
-import './Fonts.scss';
-import Unavailable from '../../../shared/unavailable/Unavailable';
 import WebFont from 'webfontloader';
-import Font from './font/Font';
+import Unavailable from '../../../../shared/Unavailable';
+import Font from './Font';
+import './Fonts.scss';
 
 export default function Fonts(props) {
     const {fonts} = props;

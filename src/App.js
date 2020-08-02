@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.scss';
-import Header from './components/main/header/Header';
-import Footer from './components/main/footer/Footer';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Home from './components/main/home/Home';
-import NotFound from './components/main/not-found/NotFound';
-import Login from './components/session/login/Login';
-import Register from './components/session/register/Register';
+import Header from './components/main/Header';
+import Footer from './components/main/Footer';
+import Home from './components/main/Home';
+import NotFound from './components/main/NotFound';
+import Login from './components/session/Login';
+import Register from './components/session/Register';
 
 function App() {
   return (

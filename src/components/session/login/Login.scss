@@ -30,7 +30,6 @@
         background-image: url('/img/login.png');
         background-repeat: no-repeat;
         background-position: left;
-        /*background-color: $color-primary-2-hex;*/
     }
 }
 
@@ -43,6 +42,11 @@
         .left {
             order: 2;
             width: 100%;
+            form {
+                h1 {
+                    text-align: center;
+                }
+            }
         }
         .right {
             order: 1;

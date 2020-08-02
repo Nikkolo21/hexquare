@@ -1,7 +1,7 @@
 import React from 'react';
 import './ColorPalette.scss';
 import Color from './color/Color';
-import Unavailable from '../../../shared/unavailable/Unavailable';
+import Unavailable from '../../../../shared/Unavailable';
 
 export default function ColorPalette(props) {
     const {colors = [], paletteTitle=""} = props;
