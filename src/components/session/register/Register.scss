@@ -1,15 +1,55 @@
+@import './src/assets/colors.scss';
+@import './src/assets/breakpoints.scss';
+
 .register-section {
     display: flex;
     height: 80vh;
     .left {
-        width: 40%;
+        width: 60%;
         background-color: white;
+        display: grid;
+        place-items: center;
+
+        form {
+            width: 100%;
+            max-width: 500px;
+            h1 {
+                margin: 50px 0;
+            }
+            .have-account {
+                color: $color-primary-2-hex;
+            }
+            .error {
+                color: red;
+                margin: auto auto;
+            }
+        }
     }
     .right {
-        width: 60%;
+        width: 40%;
         background-image: url('/img/register.png');
         background-repeat: no-repeat;
-        background-position: center;
-        // <span>Photo by <a href="https://unsplash.com/@adamthehooligan?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Adam Miller</a> on <a href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
+        background-position: left;
+        /*background-color: $color-primary-2-hex;*/
+    }
+}
+
+@media (max-width: $large_devices) {
+    .register-section {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        padding: 20px;
+        .left {
+            order: 2;
+            width: 100%;
+        }
+        .right {
+            order: 1;
+            height: 25vh;
+            width: 100%;
+            background-position: center;
+            background-size: contain;
+        }
     }
 }

@@ -1,4 +1,5 @@
 @import './src/assets/colors.scss';
+@import './src/assets/breakpoints.scss';
 
 .login-section {
     display: flex;
@@ -15,6 +16,13 @@
             h1 {
                 margin: 50px 0;
             }
+            .error {
+                color: red;
+                margin: auto auto;
+            }
+            .create-account {
+                color: $color-primary-2-hex;
+            }
         }
     }
     .right {
@@ -23,5 +31,25 @@
         background-repeat: no-repeat;
         background-position: left;
         /*background-color: $color-primary-2-hex;*/
+    }
+}
+
+@media (max-width: $large_devices) {
+    .login-section {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        padding: 20px;
+        .left {
+            order: 2;
+            width: 100%;
+        }
+        .right {
+            order: 1;
+            height: 25vh;
+            width: 100%;
+            background-position: center;
+            background-size: contain;
+        }
     }
 }

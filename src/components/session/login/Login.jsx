@@ -1,19 +1,52 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Login.scss';
 import Button from '../../form/button/Button';
 import Input from '../../form/input/Input';
-import { getUsers } from '../../../services/user.service';
+import { useForm } from "react-hook-form";
+import { login } from '../../../services/session.service';
+import { Link } from 'react-router-dom';
+import { loginForm } from './login.form';
 
 export default function Login() {
-    // getUsers(elem => {})
+    const { register, handleSubmit, errors } = useForm();
+    const [errorMessage, setErrorMessage] = useState(null);
+
+    const onSubmit = ({email, password}) => {
+        setErrorMessage(null);
+        login(email, password, (response) => {
+            if(response && response.errorMessage) {
+                setErrorMessage(response.errorMessage);
+            }
+        });
+    };
+
     return (
         <section className="login-section">
             <div className="left">
-                <form>
+                <form onSubmit={handleSubmit(onSubmit)}>
                     <h1>Log in to your account</h1>
-                    <Input title="Email Address" input_type="email" type="primary" placeholder="example@mail.com"/>
-                    <Input title="Password" input_type="password" type="primary" placeholder="password"/>
-                    <Button type="primary" text="Log in"/>
+                    {
+                        loginForm.map(elem => 
+                        <Input
+                            key={elem.id}
+                            minLength={elem.minLenght}
+                            errors={errors[`${elem.name}`]}
+                            inputRef={register({
+                                minLength: elem.minLenght,
+                                maxLength: elem.maxLenght,
+                                required: elem.required,
+                                pattern: elem.pattern
+                            })}
+                            inputName={elem.name}
+                            title={elem.title}
+                            inputType={elem.inputType}
+                            type={elem.type}
+                            placeholder={elem.placeholder}
+                        />)
+                    }
+                    <small>You do not have an account? <Link className="create-account" to="/register">Create one</Link></small>
+                    <Button type="primary" text="Log in" />
+                    <p>{errorMessage && <small className="error">{errorMessage}</small>}</p>
                 </form>
             </div>
             <div className="right"></div>
