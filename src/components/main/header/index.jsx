@@ -1,18 +1,26 @@
-import React, { Component } from 'react'
+import React from 'react';
 import './Header.scss';
 import { NavLink } from 'react-router-dom';
 
-export default class Header extends Component {
-    render() {
-        return (
-            <header>
-                <NavLink exact={true} activeClassName="is-active" className="logo link" to="/">
-                    HEXQUARE <sup>dev</sup>
-                </NavLink>
-                <NavLink activeClassName="is-active" className="link" to="/login">
-                    Login
-                </NavLink>
-            </header>
-        )
-    }
+export default function Header({isLoggedIn}) {
+    return (
+        <header>
+            <NavLink exact={true} activeClassName="is-active" className="logo link" to="/">
+                HEXQUARE <sup>dev</sup>
+            </NavLink>
+            {
+                isLoggedIn ?
+                <section>
+                    <NavLink activeClassName="is-active" className="link" to="/create_project">
+                        Create Project
+                    </NavLink>
+                </section>:
+                <section>
+                    <NavLink activeClassName="is-active" className="link" to="/login">
+                        Login
+                    </NavLink>
+                </section>
+            }
+        </header>
+    )
 }

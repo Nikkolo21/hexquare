@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.scss';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import Header from './components/main/Header';
 import Footer from './components/main/Footer';
 import Home from './components/main/Home';
@@ -9,11 +9,14 @@ import Login from './components/session/Login';
 import Register from './components/session/Register';
 import CreateProject from './components/sections/inside/CreateProject';
 import Inside from './components/sections/inside';
+import { getItem } from './utils/localstorage';
 
 function App() {
+  const isLoggedIn = !!getItem('tkn');
+
   return (
     <Router>
-      <Header></Header>
+      <Header isLoggedIn={isLoggedIn}></Header>
       <main className="App">
         <Switch>
           <Route exact path="/">
@@ -25,12 +28,12 @@ function App() {
           <Route exact path="/register">
             <Register/>
           </Route>
-          <Route exact path="/ins">
+          <PrivateRoute path='/ins'>
             <Inside/>
-          </Route>
-          <Route exact path="/ins/create_project">
+          </PrivateRoute>
+          <PrivateRoute exact path="/create_project">
             <CreateProject/>
-          </Route>
+          </PrivateRoute>
           <Route path="*">
             <NotFound/>
           </Route>
@@ -38,6 +41,27 @@ function App() {
       </main>
       <Footer></Footer>
     </Router>
+  );
+}
+
+function PrivateRoute({ children, ...rest }) {
+  const isLoggedIn = !!getItem('tkn');
+  return (
+    <Route
+      {...rest}
+      render={({ location }) =>
+        isLoggedIn ? (
+          children
+        ) : (
+          <Redirect
+            to={{
+              pathname: "/login",
+              state: { from: location }
+            }}
+          />
+        )
+      }
+    />
   );
 }
 
