@@ -1,5 +1,8 @@
 import React from 'react';
 import './App.scss';
+
+import './services/interceptor';
+
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import Header from './components/main/Header';
 import Footer from './components/main/Footer';

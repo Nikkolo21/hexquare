@@ -12,8 +12,8 @@ export function createProject(body, callback) {
                 Authorization: `Bearer ${getItem('tkn')}`
             }
         }
-    ).then(({data}) => {
-        return data;
+    ).then((response) => {
+        return response;
     }).then(callback);
 };
 
@@ -27,8 +27,8 @@ export function getProject(id, callback) {
                 Authorization: `Bearer ${getItem('tkn')}`
             }
         }
-    ).then(({data}) => {
-        return data;
+    ).then(resp => {
+        return resp;
     }).then(callback);
 }
 
@@ -42,7 +42,7 @@ export function getProjectsByUserID(id, callback) {
                 Authorization: `Bearer ${getItem('tkn')}`
             }
         }
-    ).then(({data}) => {
-        return data;
+    ).then((resp) => {
+        return resp;
     }).then(callback);
 }

@@ -17,7 +17,7 @@ export default function CreateProject() {
 
     const onSubmit = elem => {
         createProject({...elem, user_id: getItem('uid')}, res => {
-            if (res.errorMessage) {
+            if (res && res.errorMessage) {
                 setErrorMessage(res.errorMessage);
             } else {
                 history.push('/ins');
