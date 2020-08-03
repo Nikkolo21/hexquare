@@ -1,5 +1,5 @@
 export function login (email, password, callback) {
-    fetch('http://192.168.1.111:8000/login', {
+    fetch('http://192.168.1.111:8000/session/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -12,7 +12,7 @@ export function login (email, password, callback) {
 };
 
 export function signup (name, last_name, email, password, callback) {
-    fetch('http://192.168.1.111:8000/register', {
+    fetch('http://192.168.1.111:8000/session/register', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

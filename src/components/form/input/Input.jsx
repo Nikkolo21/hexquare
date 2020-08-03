@@ -10,6 +10,7 @@ export default function Input(props) {
         inputType="text",
         inputName="",
         minLength="",
+        maxLength="",
         inputRef= () => {},
         errors=false
     } = props;
@@ -21,6 +22,7 @@ export default function Input(props) {
             {errors && errors.type === "required" && <small className="error">{inputName} is required</small>}
             {errors && errors.type === "pattern" && <small className="error">Verify your {inputName}</small>}
             {errors && errors.type === "minLength" && <small className="error">Min {minLength} length</small>}
+            {errors && errors.type === "maxLength" && <small className="error">Max {maxLength} length</small>}
         </div>
     )
 }

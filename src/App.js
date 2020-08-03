@@ -7,6 +7,8 @@ import Home from './components/main/Home';
 import NotFound from './components/main/NotFound';
 import Login from './components/session/Login';
 import Register from './components/session/Register';
+import CreateProject from './components/sections/inside/CreateProject';
+import Inside from './components/sections/inside';
 
 function App() {
   return (
@@ -22,6 +24,12 @@ function App() {
           </Route>
           <Route exact path="/register">
             <Register/>
+          </Route>
+          <Route exact path="/ins">
+            <Inside/>
+          </Route>
+          <Route exact path="/ins/create_project">
+            <CreateProject/>
           </Route>
           <Route path="*">
             <NotFound/>

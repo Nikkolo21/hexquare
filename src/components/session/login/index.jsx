@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
-import './Login.scss';
+import { useForm } from "react-hook-form";
+import { Link, useHistory } from 'react-router-dom';
 import Button from '../../form/button/Button';
 import Input from '../../form/input/Input';
-import { useForm } from "react-hook-form";
 import { login } from '../../../services/session.service';
-import { Link } from 'react-router-dom';
 import { loginForm } from './login.form';
+import './Login.scss';
+import { setItem } from '../../../utils/localstorage';
 
 export default function Login() {
+    let history = useHistory();
     const { register, handleSubmit, errors } = useForm();
     const [errorMessage, setErrorMessage] = useState(null);
 
@@ -16,6 +18,10 @@ export default function Login() {
         login(email, password, (response) => {
             if(response && response.errorMessage) {
                 setErrorMessage(response.errorMessage);
+            } else {
+                setItem('tkn', response.token);
+                setItem('uid', response.user_id);
+                history.push('/ins');
             }
         });
     };
@@ -30,6 +36,7 @@ export default function Login() {
                         <Input
                             key={elem.id}
                             minLength={elem.minLenght}
+                            maxLength={elem.maxLenght}
                             errors={errors[`${elem.name}`]}
                             inputRef={register({
                                 minLength: elem.minLenght,

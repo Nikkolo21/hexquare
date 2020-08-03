@@ -1,0 +1,15 @@
+.create-project-section {
+    display: grid;
+    place-items: center;
+    padding: 40px 20px;
+    form {
+        width: 100%;
+        max-width: 500px;
+        h1 {
+            text-align: center;
+        }
+        .error {
+            color: red;
+        }
+    }
+}

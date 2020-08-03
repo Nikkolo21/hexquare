@@ -30,6 +30,7 @@ export default function Register() {
                         <Input
                             key={elem.id}
                             minLength={elem.minLenght}
+                            maxLength={elem.maxLenght}
                             errors={errors[`${elem.name}`]}
                             inputRef={register({
                                 minLength: elem.minLenght,
