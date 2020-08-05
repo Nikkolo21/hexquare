@@ -1,0 +1,48 @@
+@import './src/assets/colors.scss';
+
+.projects-box {
+    display: grid;
+    width: 160px;
+    text-align: center;
+    .list-projects {
+        margin-top: -20px;
+        padding: 10px;
+        display: none;
+        z-index: 10;
+    
+        .create-project {
+            margin-top: 5px;
+            background-color: $color-primary-2-hex;
+            color: white;
+        }
+    }
+    .active-text {
+        width: 100%;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        cursor: pointer;
+    }
+}
+    
+.projects-box:hover {
+    .list-projects {
+        display: grid;
+    }
+}
+
+
+.list-projects {
+    a {
+        height: 30px;
+        line-height: 30px;
+        border-radius: 5px;
+        cursor: pointer;
+        padding: 10px 15px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        margin: 1px 0;
+        background-color: #f0f0f0;
+    }
+}

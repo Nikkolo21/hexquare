@@ -16,11 +16,13 @@ export default function CreateProject() {
     const [errorMessage, setErrorMessage] = useState(null);
 
     const onSubmit = elem => {
-        createProject({...elem, user_id: getItem('uid')}, res => {
-            if (res && res.errorMessage) {
-                setErrorMessage(res.errorMessage);
-            } else {
-                history.push('/ins');
+        createProject({...elem, user_id: getItem('uid')}, response => {
+            if (response) {
+                if (response.errorMessage) {
+                    setErrorMessage(response.errorMessage);
+                } else {
+                    history.push('/ins');
+                }
             }
         });
     };

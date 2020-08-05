@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useForm } from "react-hook-form";
 import { Link, useHistory } from 'react-router-dom';
 import Button from '../../form/button/Button';
@@ -7,11 +7,15 @@ import { login } from '../../../services/session.service';
 import { loginForm } from './login.form';
 import './Login.scss';
 import { setItem } from '../../../utils/localstorage';
+import AppContext from '../../../context/app.context';
 
 export default function Login() {
-    let history = useHistory();
     const { register, handleSubmit, errors } = useForm();
     const [errorMessage, setErrorMessage] = useState(null);
+    const { toggleIsLoggedIn } = useContext(AppContext);
+    
+    
+    let history = useHistory();
 
     const onSubmit = ({email, password}) => {
         setErrorMessage(null);
@@ -21,6 +25,7 @@ export default function Login() {
             } else {
                 setItem('tkn', response.token);
                 setItem('uid', response.user_id);
+                toggleIsLoggedIn(true); // context
                 history.push('/ins');
             }
         });

@@ -12,8 +12,8 @@ export function createProject(body, callback) {
                 Authorization: `Bearer ${getItem('tkn')}`
             }
         }
-    ).then((response) => {
-        return response;
+    ).then(({data = null}) => {
+        return data;
     }).then(callback);
 };
 
@@ -27,14 +27,14 @@ export function getProject(id, callback) {
                 Authorization: `Bearer ${getItem('tkn')}`
             }
         }
-    ).then(resp => {
-        return resp;
+    ).then(({data = null}) => {
+        return data;
     }).then(callback);
 }
 
 export function getProjectsByUserID(id, callback) {
     Axios.get(
-        `http://192.168.1.111:8000/project?user_id${id}`,
+        `http://192.168.1.111:8000/project?user_id=${id}`,
         {
             ContentType: 'application/json',
             Accept: 'application/json',
@@ -42,7 +42,7 @@ export function getProjectsByUserID(id, callback) {
                 Authorization: `Bearer ${getItem('tkn')}`
             }
         }
-    ).then((resp) => {
-        return resp;
+    ).then(({data = null}) => {
+        return data;
     }).then(callback);
 }

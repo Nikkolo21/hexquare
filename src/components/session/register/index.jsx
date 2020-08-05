@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
-import './Register.scss';
+import { Link } from 'react-router-dom';
+import { useForm } from "react-hook-form";
 import Button from '../../form/button/Button';
 import Input from '../../form/input/Input';
-import { useForm } from "react-hook-form";
 import { signup } from '../../../services/session.service';
-import { Link } from 'react-router-dom';
 import { registerForm } from './register.form';
+import './Register.scss';
 
 export default function Register() {
     const { register, handleSubmit, errors } = useForm();
