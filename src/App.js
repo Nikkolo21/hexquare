@@ -20,7 +20,6 @@ function App() {
   function toggleIsLoggedIn() {
     setIsLoggedIn(true);
   }
-
   return (
     <AppProvider value={{isLoggedIn, toggleIsLoggedIn}}>
       <Router>

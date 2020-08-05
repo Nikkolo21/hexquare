@@ -1,19 +1,23 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import ListProjects from '../../sections/inside/ListProjects';
 import AppContext from '../../../context/app.context';
-import './Header.scss';
 import { verifySession } from '../../../services/session.service';
 import { getItem } from '../../../utils/localstorage';
+import './Header.scss';
 
 export default function Header() {
     const {isLoggedIn, toggleIsLoggedIn} = useContext(AppContext);
-  
-    getItem('tkn') && getItem('uid') && verifySession({}, resp => {
-      if(resp && !resp.errorMessage) {
-        toggleIsLoggedIn(true);
-      }
-    });
+    const [isLoaded, setIsLoaded] = useState(false);
+
+    useEffect(() => {
+        getItem('tkn') && getItem('uid') && verifySession({}, resp => {
+            setIsLoaded(true);
+            if(resp && !resp.errorMessage) {
+                toggleIsLoggedIn(true);
+            }
+        });
+    }, [isLoggedIn, toggleIsLoggedIn]);
 
     return (
         <header>
@@ -21,15 +25,21 @@ export default function Header() {
                 HEXQUARE
             </NavLink>
             {
-                isLoggedIn ?
-                <section>
-                    <ListProjects/>
-                </section>:
-                <section>
-                    <NavLink activeClassName="is-active" className="link" to="/login">
-                        Login
-                    </NavLink>
-                </section>
+                isLoaded && 
+                    <>
+                        {
+                            isLoggedIn ?
+                            <section>
+                                <ListProjects/>
+                            </section>
+                            :
+                            <section>
+                                <NavLink activeClassName="is-active" className="link" to="/login">
+                                    Login
+                                </NavLink>
+                            </section>
+                        }
+                    </>
             }
         </header>
     )
