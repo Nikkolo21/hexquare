@@ -1,10 +1,10 @@
 import React from 'react';
-import './Inside.scss';
+import './Assets.scss';
 
-export default function Inside() {
+export default function Assets() {
     return (
         <section>
-            I'm inside
+            i am assets
         </section>
     )
 }

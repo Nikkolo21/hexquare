@@ -1,17 +1,30 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import Header from './components/main/Header';
+import { AppProvider } from './context/app.context';
+
+// general
+import OutHeader from './components/main/Header/OutHeader';
+import InsHeader from './components/main/Header/InsHeader';
 import Footer from './components/main/Footer';
 import Home from './components/main/Home';
 import NotFound from './components/main/NotFound';
+
+// session
 import Login from './components/session/Login';
 import Register from './components/session/Register';
+
+// inside
 import CreateProject from './components/sections/inside/CreateProject';
-import Inside from './components/sections/inside';
-import { getItem } from './utils/localstorage';
+
+// admin
+import Nav from './components/sections/admin/Nav';
+import Admin from './components/sections/admin';
+import Visual from './components/sections/admin/Visual';
+import Assets from './components/sections/admin/Assets';
+import Code from './components/sections/admin/Code';
+
 import './services/interceptor';
-import { AppProvider } from './context/app.context';
 import './App.scss';
 
 function App() {
@@ -23,24 +36,43 @@ function App() {
   return (
     <AppProvider value={{isLoggedIn, toggleIsLoggedIn}}>
       <Router>
-        <Header></Header>
         <main className="App">
           <Switch>
-            <Route exact path="/">
-              <Home/>
+            <Route path="/o">
+              <OutHeader></OutHeader>
+              <Route exact path="/o/home">
+                <Home/>
+              </Route>
+              <Route exact path="/o/login">
+                <Login/>
+              </Route>
+              <Route exact path="/o/register">
+                <Register/>
+              </Route>
             </Route>
-            <Route exact path="/login">
-              <Login/>
+            
+            <Route path="/i">
+              <InsHeader></InsHeader>
+              <Route exact path="/i/projects">
+                <Admin/>
+              </Route>
+              <Route path='/i/project/:id/:child'>
+                <Nav/>
+                <Route path='/i/project/:id/visual'>
+                  <Visual/>
+                </Route>
+                <Route exact path='/i/project/:id/assets'>
+                  <Assets/>
+                </Route>
+                <Route exact path='/i/project/:id/code'>
+                  <Code/>
+                </Route>
+              </Route>
+              <Route exact path="/i/create_project">
+                <CreateProject/>
+              </Route>
             </Route>
-            <Route exact path="/register">
-              <Register/>
-            </Route>
-            <PrivateRoute path='/ins'>
-              <Inside/>
-            </PrivateRoute>
-            <PrivateRoute exact path="/create_project">
-              <CreateProject/>
-            </PrivateRoute>
+
             <Route path="*">
               <NotFound/>
             </Route>
@@ -49,27 +81,6 @@ function App() {
         <Footer></Footer>
       </Router>
     </AppProvider>
-  );
-}
-
-function PrivateRoute({ children, ...rest }) {
-  const isLoggedIn = !!getItem('tkn');
-  return (
-    <Route
-      {...rest}
-      render={({ location }) =>
-        isLoggedIn ? (
-          children
-        ) : (
-          <Redirect
-            to={{
-              pathname: "/login",
-              state: { from: location }
-            }}
-          />
-        )
-      }
-    />
   );
 }
 

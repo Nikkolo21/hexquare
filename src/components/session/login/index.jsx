@@ -5,17 +5,15 @@ import Button from '../../form/button/Button';
 import Input from '../../form/input/Input';
 import { login } from '../../../services/session.service';
 import { loginForm } from './login.form';
-import './Login.scss';
 import { setItem } from '../../../utils/localstorage';
 import AppContext from '../../../context/app.context';
+import './Login.scss';
 
 export default function Login() {
     const { register, handleSubmit, errors } = useForm();
     const [errorMessage, setErrorMessage] = useState(null);
     const { toggleIsLoggedIn } = useContext(AppContext);
-    
-    
-    let history = useHistory();
+    const history = useHistory();
 
     const onSubmit = ({email, password}) => {
         setErrorMessage(null);
@@ -25,8 +23,8 @@ export default function Login() {
             } else {
                 setItem('tkn', response.token);
                 setItem('uid', response.user_id);
-                toggleIsLoggedIn(true); // context
-                history.push('/ins');
+                toggleIsLoggedIn(true);
+                history.push('/i/projects');
             }
         });
     };
@@ -56,8 +54,13 @@ export default function Login() {
                             placeholder={elem.placeholder}
                         />)
                     }
-                    <small>You do not have an account? <Link className="create-account" to="/register">Create one</Link></small>
-                    <p>{errorMessage && <small className="error">{errorMessage}</small>}</p>
+                    <small>You do not have an account? <Link className="create-account" to="/o/register">Create one</Link></small>
+
+                    {
+                        errorMessage && errorMessage.map(elem =>
+                            <p><small className="error">{elem}</small></p>
+                        )
+                    }
                     <Button type="primary" text="Log in" />
                 </form>
             </div>

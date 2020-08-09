@@ -45,8 +45,13 @@ export default function Register() {
                             placeholder={elem.placeholder}
                         />)
                     }
-                    <small><Link className="have-account" to="/login">I already have an account</Link></small>
-                    <p>{errorMessage && <small className="error">{errorMessage}</small>}</p>
+                    <small><Link className="have-account" to="/o/login">I already have an account</Link></small>
+
+                    {
+                        errorMessage && errorMessage.map(elem =>
+                            <p><small className="error">{elem}</small></p>
+                        )
+                    }
                     <Button type="primary" text="Sign up" />
                 </form>
             </div>

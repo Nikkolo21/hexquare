@@ -1,0 +1,14 @@
+@import './src/assets/colors.scss';
+
+.admin-navigation {
+    text-align: center;
+    padding: 50px 0;
+    a {
+        padding: 10px;
+        text-decoration: none;
+        color: black;
+    }
+    .is-active {
+        color: $color-primary-2-hex;
+    }
+}

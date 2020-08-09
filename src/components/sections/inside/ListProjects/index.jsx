@@ -20,13 +20,13 @@ export default function ListProjects() {
         <div className="list-projects">
             {
                 projects.map(elem => (
-                    <NavLink key={elem._id} onClick={() => setActive(elem.name)} to={`/project/${elem._id}`}>
+                    <NavLink key={elem._id} onClick={() => setActive(elem.name)} to={`/i/project/${elem._id}/visual`}>
                         {elem.name}
                     </NavLink>
                 ))
             }
 
-            <NavLink onClick={() => setActive("Create Project")} className="create-project" to="/create_project">
+            <NavLink onClick={() => setActive("Create Project")} className="create-project" to="/i/create_project">
                 Create Project
             </NavLink>
         </div>

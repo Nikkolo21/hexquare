@@ -4,7 +4,7 @@ import Color from './color/Color';
 import Unavailable from '../../../../shared/Unavailable';
 
 export default function ColorPalette(props) {
-    const {colors = [], paletteTitle=""} = props;
+    const {colors, paletteTitle=""} = props;
     return (
         <>
             <p>{paletteTitle}</p>

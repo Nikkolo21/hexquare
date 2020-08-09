@@ -46,3 +46,19 @@ export function getProjectsByUserID(id, callback) {
         return data;
     }).then(callback);
 }
+
+
+export function getVisualIdentity(project_id, callback) {
+    Axios.get(
+        `http://192.168.1.111:8000/project/visual-identity?project_id=${project_id}`,
+        {
+            ContentType: 'application/json',
+            Accept: 'application/json',
+            headers: {
+                Authorization: `Bearer ${getItem('tkn')}`
+            }
+        }
+    ).then(({data = null}) => {
+        return data;
+    }).then(callback);
+}

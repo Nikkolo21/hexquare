@@ -1,7 +1,7 @@
 import Axios from "axios";
 import { getItem } from "../utils/localstorage";
 
-export function login(email, password, callback) {
+export async function login(email, password, callback) {
     fetch('http://192.168.1.111:8000/session/login', {
         method: 'POST',
         headers: {
@@ -14,7 +14,7 @@ export function login(email, password, callback) {
     }).then(callback)
 };
 
-export function signup(name, last_name, email, password, callback) {
+export async function signup(name, last_name, email, password, callback) {
     fetch('http://192.168.1.111:8000/session/register', {
         method: 'POST',
         headers: {
@@ -27,7 +27,7 @@ export function signup(name, last_name, email, password, callback) {
     }).then(callback)
 };
 
-export function verifySession(body={}, callback) {
+export async function verifySession(body, callback) {
     Axios.post(
         'http://192.168.1.111:8000/session/verify',
         body,

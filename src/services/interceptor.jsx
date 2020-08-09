@@ -7,7 +7,7 @@ Axios.interceptors.response.use(
         }
     }, error => {
         if(error.response.status === 401 || error.response.status === 403) {
-            window.location.replace('/login');
+            window.location.replace('/o/login');
             clear();
         }
     }

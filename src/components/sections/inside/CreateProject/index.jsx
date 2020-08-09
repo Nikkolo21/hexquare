@@ -21,7 +21,7 @@ export default function CreateProject() {
                 if (response.errorMessage) {
                     setErrorMessage(response.errorMessage);
                 } else {
-                    history.push('/ins');
+                    history.push(`/i/project/${response._id}/visual`);
                 }
             }
         });
@@ -51,7 +51,12 @@ export default function CreateProject() {
                         placeholder={elem.placeholder}
                     />)
                 }
-                <p>{errorMessage && <small className="error">{errorMessage}</small>}</p>
+
+                {
+                    errorMessage && errorMessage.map(elem =>
+                        <p><small className="error">{elem}</small></p>
+                    )
+                }
                 <Button type="primary" text="Create" />
             </form>
         </section>
