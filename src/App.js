@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
 import { AppProvider } from './context/app.context';
 
 // general
-import OutHeader from './components/main/Header/OutHeader';
-import InsHeader from './components/main/Header/InsHeader';
+import Header from './components/main/Header';
 import Footer from './components/main/Footer';
 import Home from './components/main/Home';
 import NotFound from './components/main/NotFound';
@@ -37,12 +36,12 @@ function App() {
     <AppProvider value={{isLoggedIn, toggleIsLoggedIn}}>
       <Router>
         <main className="App">
+          <Header></Header>
           <Switch>
+            <Route exact path="/">
+              <Home/>
+            </Route>
             <Route path="/o">
-              <OutHeader></OutHeader>
-              <Route exact path="/o/home">
-                <Home/>
-              </Route>
               <Route exact path="/o/login">
                 <Login/>
               </Route>
@@ -52,7 +51,6 @@ function App() {
             </Route>
             
             <Route path="/i">
-              <InsHeader></InsHeader>
               <Route exact path="/i/projects">
                 <Admin/>
               </Route>

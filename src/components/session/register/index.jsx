@@ -1,21 +1,30 @@
-import React, {useState} from 'react';
-import { Link } from 'react-router-dom';
+import React, {useState, useContext} from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import Button from '../../form/button/Button';
 import Input from '../../form/input/Input';
 import { signup } from '../../../services/session.service';
 import { registerForm } from './register.form';
 import './Register.scss';
+import AppContext from '../../../context/app.context';
+import { setItem } from '../../../utils/localstorage';
 
 export default function Register() {
     const { register, handleSubmit, errors } = useForm();
     const [errorMessage, setErrorMessage] = useState(null);
+    const { toggleIsLoggedIn } = useContext(AppContext);
+    const history = useHistory();
 
     const onSubmit = ({name, lastname, email, password}) => {
         setErrorMessage(null);
         signup(name, lastname, email, password, (response) => {
             if(response && response.errorMessage) {
                 setErrorMessage(response.errorMessage);
+            } else {
+                setItem('tkn', response.token);
+                setItem('uid', response.user_id);
+                toggleIsLoggedIn(true);
+                history.push('/i/projects');
             }
         });
     };

@@ -32,9 +32,9 @@ export function getProject(id, callback) {
     }).then(callback);
 }
 
-export function getProjectsByUserID(id, callback) {
+export function getProjectsByUserID(user_id, callback) {
     Axios.get(
-        `http://192.168.1.111:8000/project?user_id=${id}`,
+        `http://192.168.1.111:8000/project?user_id=${user_id}`,
         {
             ContentType: 'application/json',
             Accept: 'application/json',
@@ -50,7 +50,7 @@ export function getProjectsByUserID(id, callback) {
 
 export function getVisualIdentity(project_id, callback) {
     Axios.get(
-        `http://192.168.1.111:8000/project/visual-identity?project_id=${project_id}`,
+        `http://192.168.1.111:8000/visual-identity?project_id=${project_id}`,
         {
             ContentType: 'application/json',
             Accept: 'application/json',

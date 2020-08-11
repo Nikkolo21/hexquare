@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
-import ListProjects from '../../../sections/inside/ListProjects';
-import AppContext from '../../../../context/app.context';
-import { verifySession } from '../../../../services/session.service';
-import { getItem } from '../../../../utils/localstorage';
-import '../Header.scss';
+import ListProjects from '../../sections/inside/ListProjects';
+import AppContext from '../../../context/app.context';
+import { verifySession } from '../../../services/session.service';
+import { getItem } from '../../../utils/localstorage';
+import './Header.scss';
 
 export default function InsHeader() {
     const {isLoggedIn, toggleIsLoggedIn} = useContext(AppContext);
@@ -19,11 +19,14 @@ export default function InsHeader() {
                     setIsLoaded(true);
                     if(resp && !resp.errorMessage) {
                         toggleIsLoggedIn(true);
+                    } else {
+                        setIsLoaded(true);
+                        toggleIsLoggedIn(false);
+                        history.push('/o/login');
                     }
                 })
             } else {
                 setIsLoaded(true);
-                history.push('/o/login');
             }
         }
         !isLoggedIn && verifyToken();
@@ -36,14 +39,15 @@ export default function InsHeader() {
             </NavLink>
             {
                 isLoaded && 
-                    <>
+                    <section>
                         {
-                            isLoggedIn &&
-                            <section>
-                                <ListProjects/>
-                            </section>
+                            isLoggedIn ?
+                                <ListProjects/>:
+                                <NavLink activeClassName="is-active" className="link" to="/o/login">
+                                    Login
+                                </NavLink>
                         }
-                    </>
+                    </section>
             }
         </header>
     )

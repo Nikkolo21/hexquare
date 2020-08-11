@@ -16,7 +16,7 @@ export default function CreateProject() {
     const [errorMessage, setErrorMessage] = useState(null);
 
     const onSubmit = elem => {
-        createProject({...elem, user_id: getItem('uid')}, response => {
+        createProject({...elem, private: true, user_id: getItem('uid')}, response => {
             if (response) {
                 if (response.errorMessage) {
                     setErrorMessage(response.errorMessage);
